@@ -1,0 +1,538 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f1f3f6;
+    color: #222;
+}
+
+/* =========================
+   ENCABEZADO
+========================= */
+
+header {
+    background: #181818;
+    color: white;
+    text-align: center;
+    padding: 45px 20px;
+}
+
+header h1 {
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+header p {
+    color: #bdbdbd;
+    font-size: 17px;
+}
+
+
+/* =========================
+   CONTENIDO PRINCIPAL
+========================= */
+
+main {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+section {
+    margin-bottom: 55px;
+}
+
+section h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    border-left: 5px solid #181818;
+    padding-left: 12px;
+}
+
+
+/* =========================
+   FORMULARIOS
+========================= */
+
+#form-banda,
+#form-cancion {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+
+    display: grid;
+    gap: 15px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+#form-banda input,
+#form-cancion input,
+#form-cancion select {
+    width: 100%;
+
+    padding: 13px;
+
+    border: 1px solid #ccc;
+    border-radius: 7px;
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+#form-banda input:focus,
+#form-cancion input:focus,
+#form-cancion select:focus {
+    border-color: #181818;
+}
+
+
+/* =========================
+   BOTONES PRINCIPALES
+========================= */
+
+#form-banda button,
+#form-cancion button {
+    padding: 13px;
+
+    border: none;
+    border-radius: 7px;
+
+    background: #181818;
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+#form-banda button:hover,
+#form-cancion button:hover {
+    background: #333;
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   TARJETAS DE BANDAS
+========================= */
+
+#lista-bandas {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(280px, 1fr));
+
+    gap: 20px;
+}
+
+#lista-bandas > div {
+    background: white;
+
+    padding: 23px;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.08);
+
+    transition: 0.2s;
+}
+
+#lista-bandas > div:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 7px 20px rgba(0, 0, 0, 0.12);
+}
+
+#lista-bandas h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+#lista-bandas p {
+    margin-bottom: 9px;
+    line-height: 1.5;
+}
+
+
+/* =========================
+   TARJETAS DE CANCIONES
+========================= */
+
+#lista-canciones {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(280px, 1fr));
+
+    gap: 20px;
+}
+
+#lista-canciones > div {
+    background: white;
+
+    padding: 23px;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.08);
+
+    transition: 0.2s;
+}
+
+#lista-canciones > div:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 7px 20px rgba(0, 0, 0, 0.12);
+}
+
+#lista-canciones h3 {
+    font-size: 21px;
+    margin-bottom: 13px;
+}
+
+#lista-canciones p {
+    margin-bottom: 9px;
+    line-height: 1.5;
+}
+
+
+/* =========================
+   BOTONES DE LAS TARJETAS
+========================= */
+
+#lista-bandas button,
+#lista-canciones button {
+    margin-top: 12px;
+
+    margin-right: 8px;
+
+    padding: 9px 14px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: #181818;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+#lista-bandas button:hover,
+#lista-canciones button:hover {
+    background: #444;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+
+    header h1 {
+        font-size: 30px;
+    }
+
+    main {
+        width: 94%;
+    }
+
+    section h2 {
+        font-size: 24px;
+    }
+
+    #lista-bandas,
+    #lista-canciones {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* =========================
+   NAVEGACIÓN
+========================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background: #111;
+
+    box-shadow:
+        0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.nav-container {
+    width: 90%;
+    max-width: 1200px;
+
+    margin: auto;
+
+    min-height: 65px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+
+    gap: 25px;
+}
+
+.nav-links a {
+    color: #ddd;
+
+    text-decoration: none;
+
+    font-size: 15px;
+
+    transition: 0.2s;
+}
+
+.nav-links a:hover {
+    color: white;
+}
+
+
+/* =========================
+   ENCABEZADO
+========================= */
+
+header {
+    min-height: 280px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+
+/* =========================
+   ENCABEZADO DE SECCIONES
+========================= */
+
+.section-header {
+    margin-bottom: 25px;
+
+    padding: 25px;
+
+    background: white;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.section-icon {
+    font-size: 35px;
+
+    display: block;
+
+    margin-bottom: 8px;
+}
+
+.section-header h2 {
+    margin-bottom: 8px;
+
+    border-left: none;
+
+    padding-left: 0;
+}
+
+.section-header p {
+    color: #666;
+
+    line-height: 1.5;
+}
+
+
+/* =========================
+   SEPARACIÓN ENTRE SECCIONES
+========================= */
+
+#bandas {
+    padding-top: 30px;
+}
+
+#canciones {
+    padding-top: 50px;
+
+    border-top: 1px solid #ddd;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    margin-top: 60px;
+
+    padding: 35px 20px;
+
+    background: #181818;
+
+    color: white;
+
+    text-align: center;
+}
+
+footer p {
+    font-size: 18px;
+
+    font-weight: bold;
+
+    margin-bottom: 8px;
+}
+
+footer span {
+    color: #aaa;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   RESPONSIVE NAVBAR
+========================= */
+
+@media (max-width: 600px) {
+
+    .nav-container {
+        flex-direction: column;
+
+        padding: 15px 0;
+
+        gap: 12px;
+    }
+
+    .nav-links {
+        gap: 18px;
+    }
+
+}
+
+/* =========================
+   BOTONES DE ACCIONES
+========================= */
+
+#lista-bandas button,
+#lista-canciones button {
+    border: none;
+    padding: 9px 15px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 12px;
+    margin-right: 8px;
+    transition: 0.2s;
+}
+
+/* Botón editar */
+
+#lista-bandas button:first-of-type,
+#lista-canciones button:first-of-type {
+    background: #333;
+    color: white;
+}
+
+#lista-bandas button:first-of-type:hover,
+#lista-canciones button:first-of-type:hover {
+    background: #555;
+}
+
+/* Botón eliminar */
+
+#lista-bandas button:last-of-type,
+#lista-canciones button:last-of-type {
+    background: #ddd;
+    color: #222;
+}
+
+#lista-bandas button:last-of-type:hover,
+#lista-canciones button:last-of-type:hover {
+    background: #bbb;
+}
+
+
+/* =========================
+   MENSAJES
+========================= */
+
+.mensaje {
+    position: fixed;
+
+    bottom: 25px;
+    right: 25px;
+
+    background: #181818;
+    color: white;
+
+    padding: 15px 22px;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.25);
+
+    font-size: 15px;
+
+    z-index: 2000;
+
+    animation: aparecer 0.3s ease;
+}
+
+@keyframes aparecer {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}

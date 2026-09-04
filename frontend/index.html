@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Music Manager</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVEGACIÓN
+    ========================== -->
+
+    <nav class="navbar">
+
+        <div class="nav-container">
+
+            <a href="#" class="logo">
+                🎵 Music Manager
+            </a>
+
+            <div class="nav-links">
+
+                <a href="#inicio">
+                    Inicio
+                </a>
+
+                <a href="#bandas">
+                    Bandas
+                </a>
+
+                <a href="#canciones">
+                    Canciones
+                </a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         ENCABEZADO / INICIO
+    ========================== -->
+
+    <header id="inicio">
+
+        <h1>
+            🎵 Music Manager
+        </h1>
+
+        <p>
+            Gestiona tus bandas y canciones
+        </p>
+
+    </header>
+
+
+    <!-- =========================
+         CONTENIDO PRINCIPAL
+    ========================== -->
+
+    <main>
+
+
+        <!-- =========================
+             BANDAS
+        ========================== -->
+
+        <section id="bandas">
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="section-icon">
+                        🎸
+                    </span>
+
+                    <h2>
+                        Bandas
+                    </h2>
+
+                    <p>
+                        Administra las bandas registradas en tu colección musical.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- FORMULARIO BANDA -->
+
+            <form id="form-banda">
+
+                <input
+                    type="text"
+                    id="nombre-banda"
+                    placeholder="Nombre de la banda"
+                    required
+                >
+
+                <input
+                    type="text"
+                    id="genero-banda"
+                    placeholder="Género musical"
+                    required
+                >
+
+                <input
+                    type="text"
+                    id="descripcion-banda"
+                    placeholder="Descripción"
+                    required
+                >
+
+                <button type="submit">
+                    + Agregar banda
+                </button>
+
+            </form>
+
+
+            <!-- LISTA DE BANDAS -->
+
+            <div id="lista-bandas">
+
+                <!-- Las bandas aparecerán aquí -->
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             CANCIONES
+        ========================== -->
+
+        <section id="canciones">
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="section-icon">
+                        🎶
+                    </span>
+
+                    <h2>
+                        Canciones
+                    </h2>
+
+                    <p>
+                        Consulta y administra las canciones de tus bandas.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- FORMULARIO CANCIÓN -->
+
+            <form id="form-cancion">
+
+                <input
+                    type="text"
+                    id="titulo-cancion"
+                    placeholder="Título de la canción"
+                    required
+                >
+
+                <input
+                    type="text"
+                    id="album-cancion"
+                    placeholder="Álbum"
+                    required
+                >
+
+                <input
+                    type="text"
+                    id="duracion-cancion"
+                    placeholder="Duración (ej: 3:45)"
+                    required
+                >
+
+                <select
+                    id="banda-cancion"
+                    required
+                >
+
+                    <option value="">
+                        Selecciona una banda
+                    </option>
+
+                </select>
+
+                <button type="submit">
+                    + Agregar canción
+                </button>
+
+            </form>
+
+
+            <!-- LISTA DE CANCIONES -->
+
+            <div id="lista-canciones">
+
+                <!-- Las canciones aparecerán aquí -->
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            🎵 Music Manager
+        </p>
+
+        <span>
+            Aplicación web full-stack
+        </span>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
