@@ -2,7 +2,7 @@ let API_URL = "/api";
 if (window.location.protocol === "file:" || !window.location.host || window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost") {
     API_URL = "http://127.0.0.1:8000/api";
 } else if (window.location.hostname.includes("github.io")) {
-    API_URL = "https://music-manager-api.onrender.com/api";
+    API_URL = "https://music-manager-api-ydwi.onrender.com/api";
 }
 
 // =========================

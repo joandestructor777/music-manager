@@ -325,15 +325,19 @@ El objetivo es desplegar:
 
 ### Proveedor cloud
 
-**Por definir.**
+* **Backend & API:** Render Cloud
+* **Base de datos:** Neon Cloud (PostgreSQL 16)
+* **Frontend:** GitHub Pages
+* **DevOps / CI-CD:** GitHub Actions
 
 ### URL del backend
 
-**Por definir.**
+* [https://music-manager-api-ydwi.onrender.com/api](https://music-manager-api-ydwi.onrender.com/api)
+* Documentación Swagger: [https://music-manager-api-ydwi.onrender.com/docs](https://music-manager-api-ydwi.onrender.com/docs)
 
 ### URL del frontend
 
-**Por definir.**
+* [https://joandestructor777.github.io/music_manager/](https://joandestructor777.github.io/music_manager/)
 
 ## 📚 Documentación
 
