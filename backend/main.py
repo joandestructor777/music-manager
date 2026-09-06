@@ -54,6 +54,42 @@ class Cancion(BaseModel):
 # INICIO
 # =========================
 
+@app.on_event("startup")
+def inicializar_bd():
+    try:
+        conexion = conectar_db()
+        cursor = conexion.cursor()
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS bandas (
+                id SERIAL PRIMARY KEY,
+                nombre VARCHAR(100) NOT NULL,
+                genero VARCHAR(50) NOT NULL,
+                descripcion TEXT
+            );
+            CREATE TABLE IF NOT EXISTS canciones (
+                id SERIAL PRIMARY KEY,
+                titulo VARCHAR(150) NOT NULL,
+                duracion VARCHAR(10),
+                album VARCHAR(100),
+                banda_id INTEGER NOT NULL REFERENCES bandas(id) ON DELETE CASCADE
+            );
+        """)
+        conexion.commit()
+        cursor.execute("SELECT COUNT(*) FROM bandas;")
+        if cursor.fetchone()[0] == 0:
+            cursor.execute("""
+                INSERT INTO bandas (nombre, genero, descripcion) VALUES
+                ('Arctic Monkeys', 'Indie Rock', 'Banda británica de indie rock formada en Sheffield.'),
+                ('Tame Impala', 'Psychedelic Rock', 'Proyecto musical australiano liderado por Kevin Parker.'),
+                ('Pink Floyd', 'Rock Progresivo', 'Banda británica reconocida por su rock progresivo.');
+            """)
+            conexion.commit()
+        cursor.close()
+        conexion.close()
+    except Exception as e:
+        print("Aviso al inicializar base de datos:", e)
+
+
 @app.get("/")
 def inicio():
     return {

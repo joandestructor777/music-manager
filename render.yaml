@@ -1,4 +1,10 @@
-﻿services:
+﻿databases:
+  - name: music-manager-db
+    databaseName: music_db
+    user: music_user
+    plan: free
+
+services:
   - type: web
     name: music-manager-api
     runtime: python
@@ -7,6 +13,8 @@
     rootDir: backend
     envVars:
       - key: DATABASE_URL
-        sync: false
+        fromDatabase:
+          name: music-manager-db
+          property: connectionString
       - key: DB_SSLMODE
         value: require
