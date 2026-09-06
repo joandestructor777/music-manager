@@ -7,6 +7,6 @@
     rootDir: backend
     envVars:
       - key: DATABASE_URL
-        sync: false
+        value: postgresql://neondb_owner:npg_1vKDpRx4CmzI@ep-misty-dream-aej5273n-pooler.c-2.us-east-2.aws.neon.tech/neondb?sslmode=require
       - key: DB_SSLMODE
         value: require
