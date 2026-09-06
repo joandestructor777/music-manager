@@ -1,7 +1,9 @@
 from fastapi import FastAPI, APIRouter, HTTPException
+from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from config.database import conectar_db
+import os
 
 
 app = FastAPI(
@@ -92,6 +94,10 @@ def inicializar_bd():
 
 @app.get("/")
 def inicio():
+    directorio_frontend = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "frontend"))
+    index_path = os.path.join(directorio_frontend, "index.html")
+    if os.path.exists(index_path):
+        return FileResponse(index_path)
     return {
         "mensaje": "¡Music Manager está funcionando!"
     }
@@ -595,8 +601,11 @@ def obtener_canciones_por_banda(banda_id: int):
     return resultado
 
 
-# =========================
-# ACTIVAR RUTAS DE LA API
-# =========================
-
 app.include_router(router)
+
+import os
+from fastapi.staticfiles import StaticFiles
+
+directorio_frontend = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "frontend"))
+if os.path.exists(directorio_frontend):
+    app.mount("/", StaticFiles(directory=directorio_frontend, html=True), name="frontend")
