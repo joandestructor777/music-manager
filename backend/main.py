@@ -52,6 +52,20 @@ class Cancion(BaseModel):
     banda_id: int
 
 
+class Integrante(BaseModel):
+    nombre: str = Field(min_length=1, max_length=100)
+    rol: str = Field(min_length=1, max_length=100)
+    anio_ingreso: int | None = None
+    banda_id: int
+
+
+class IntegranteActualizar(BaseModel):
+    nombre: str = Field(min_length=1, max_length=100)
+    rol: str = Field(min_length=1, max_length=100)
+    anio_ingreso: int | None = None
+    banda_id: int
+
+
 # =========================
 # INICIO
 # =========================
@@ -75,6 +89,13 @@ def inicializar_bd():
                 album VARCHAR(100),
                 banda_id INTEGER NOT NULL REFERENCES bandas(id) ON DELETE CASCADE
             );
+            CREATE TABLE IF NOT EXISTS integrantes (
+                id SERIAL PRIMARY KEY,
+                nombre VARCHAR(100) NOT NULL,
+                rol VARCHAR(100) NOT NULL,
+                anio_ingreso INTEGER,
+                banda_id INTEGER NOT NULL REFERENCES bandas(id) ON DELETE CASCADE
+            );
         """)
         conexion.commit()
         cursor.execute("SELECT COUNT(*) FROM bandas;")
@@ -90,6 +111,7 @@ def inicializar_bd():
         conexion.close()
     except Exception as e:
         print("Aviso al inicializar base de datos:", e)
+
 
 
 @app.get("/")
@@ -601,7 +623,257 @@ def obtener_canciones_por_banda(banda_id: int):
     return resultado
 
 
+# =========================
+# INTEGRANTES
+# =========================
+
+# GET - Obtener todos los integrantes
+@router.get("/integrantes")
+def obtener_integrantes():
+
+    conexion = conectar_db()
+    cursor = conexion.cursor()
+
+    cursor.execute("""
+        SELECT id, nombre, rol, anio_ingreso, banda_id
+        FROM integrantes
+        ORDER BY id;
+    """)
+
+    integrantes = cursor.fetchall()
+
+    cursor.close()
+    conexion.close()
+
+    resultado = []
+
+    for integrante in integrantes:
+        resultado.append({
+            "id": integrante[0],
+            "nombre": integrante[1],
+            "rol": integrante[2],
+            "anio_ingreso": integrante[3],
+            "banda_id": integrante[4]
+        })
+
+    return resultado
+
+
+# GET - Obtener un integrante por ID
+@router.get("/integrantes/{integrante_id}")
+def obtener_integrante(integrante_id: int):
+
+    conexion = conectar_db()
+    cursor = conexion.cursor()
+
+    cursor.execute("""
+        SELECT id, nombre, rol, anio_ingreso, banda_id
+        FROM integrantes
+        WHERE id = %s;
+    """, (integrante_id,))
+
+    integrante = cursor.fetchone()
+
+    cursor.close()
+    conexion.close()
+
+    if integrante is None:
+        raise HTTPException(
+            status_code=404,
+            detail="Integrante no encontrado"
+        )
+
+    return {
+        "id": integrante[0],
+        "nombre": integrante[1],
+        "rol": integrante[2],
+        "anio_ingreso": integrante[3],
+        "banda_id": integrante[4]
+    }
+
+
+# POST - Crear un integrante
+@router.post("/integrantes")
+def crear_integrante(integrante: Integrante):
+
+    conexion = conectar_db()
+    cursor = conexion.cursor()
+
+    cursor.execute("""
+        SELECT id FROM bandas WHERE id = %s;
+    """, (integrante.banda_id,))
+
+    if cursor.fetchone() is None:
+        cursor.close()
+        conexion.close()
+        raise HTTPException(
+            status_code=404,
+            detail="La banda indicada no existe"
+        )
+
+    cursor.execute("""
+        INSERT INTO integrantes (nombre, rol, anio_ingreso, banda_id)
+        VALUES (%s, %s, %s, %s)
+        RETURNING id, nombre, rol, anio_ingreso, banda_id;
+    """, (
+        integrante.nombre,
+        integrante.rol,
+        integrante.anio_ingreso,
+        integrante.banda_id
+    ))
+
+    nuevo = cursor.fetchone()
+
+    conexion.commit()
+    cursor.close()
+    conexion.close()
+
+    return {
+        "id": nuevo[0],
+        "nombre": nuevo[1],
+        "rol": nuevo[2],
+        "anio_ingreso": nuevo[3],
+        "banda_id": nuevo[4]
+    }
+
+
+# PUT - Actualizar un integrante
+@router.put("/integrantes/{integrante_id}")
+def actualizar_integrante(integrante_id: int, integrante: IntegranteActualizar):
+
+    conexion = conectar_db()
+    cursor = conexion.cursor()
+
+    cursor.execute("""
+        SELECT id FROM bandas WHERE id = %s;
+    """, (integrante.banda_id,))
+
+    if cursor.fetchone() is None:
+        cursor.close()
+        conexion.close()
+        raise HTTPException(
+            status_code=404,
+            detail="La banda indicada no existe"
+        )
+
+    cursor.execute("""
+        UPDATE integrantes
+        SET nombre = %s,
+            rol = %s,
+            anio_ingreso = %s,
+            banda_id = %s
+        WHERE id = %s
+        RETURNING id, nombre, rol, anio_ingreso, banda_id;
+    """, (
+        integrante.nombre,
+        integrante.rol,
+        integrante.anio_ingreso,
+        integrante.banda_id,
+        integrante_id
+    ))
+
+    actualizado = cursor.fetchone()
+
+    conexion.commit()
+    cursor.close()
+    conexion.close()
+
+    if actualizado is None:
+        raise HTTPException(
+            status_code=404,
+            detail="Integrante no encontrado"
+        )
+
+    return {
+        "id": actualizado[0],
+        "nombre": actualizado[1],
+        "rol": actualizado[2],
+        "anio_ingreso": actualizado[3],
+        "banda_id": actualizado[4]
+    }
+
+
+# DELETE - Eliminar un integrante
+@router.delete("/integrantes/{integrante_id}")
+def eliminar_integrante(integrante_id: int):
+
+    conexion = conectar_db()
+    cursor = conexion.cursor()
+
+    cursor.execute("""
+        DELETE FROM integrantes
+        WHERE id = %s
+        RETURNING id;
+    """, (integrante_id,))
+
+    eliminado = cursor.fetchone()
+
+    if eliminado is None:
+        cursor.close()
+        conexion.close()
+        raise HTTPException(
+            status_code=404,
+            detail="Integrante no encontrado"
+        )
+
+    conexion.commit()
+    cursor.close()
+    conexion.close()
+
+    return {
+        "mensaje": "Integrante eliminado correctamente",
+        "id": eliminado[0]
+    }
+
+
+# GET - Obtener integrantes de una banda
+@router.get("/bandas/{banda_id}/integrantes")
+def obtener_integrantes_por_banda(banda_id: int):
+
+    conexion = conectar_db()
+    cursor = conexion.cursor()
+
+    cursor.execute("""
+        SELECT id FROM bandas WHERE id = %s;
+    """, (banda_id,))
+
+    if cursor.fetchone() is None:
+        cursor.close()
+        conexion.close()
+        raise HTTPException(
+            status_code=404,
+            detail="Banda no encontrada"
+        )
+
+    cursor.execute("""
+        SELECT i.id, i.nombre, i.rol, i.anio_ingreso, b.nombre
+        FROM integrantes i
+        INNER JOIN bandas b ON i.banda_id = b.id
+        WHERE b.id = %s
+        ORDER BY i.id;
+    """, (banda_id,))
+
+    integrantes = cursor.fetchall()
+
+    cursor.close()
+    conexion.close()
+
+    resultado = []
+
+    for integrante in integrantes:
+        resultado.append({
+            "id": integrante[0],
+            "nombre": integrante[1],
+            "rol": integrante[2],
+            "anio_ingreso": integrante[3],
+            "banda": integrante[4]
+        })
+
+    return resultado
+
+
 app.include_router(router)
+
 
 import os
 from fastapi.staticfiles import StaticFiles

@@ -1,4 +1,4 @@
-CREATE TABLE bandas (
+﻿CREATE TABLE bandas (
     id SERIAL PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     genero VARCHAR(50) NOT NULL,
@@ -11,8 +11,21 @@ CREATE TABLE canciones (
     duracion VARCHAR(10),
     album VARCHAR(100),
     banda_id INTEGER NOT NULL,
-    
+
     CONSTRAINT fk_cancion_banda
+        FOREIGN KEY (banda_id)
+        REFERENCES bandas(id)
+        ON DELETE CASCADE
+);
+
+CREATE TABLE integrantes (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    rol VARCHAR(100) NOT NULL,
+    anio_ingreso INTEGER,
+    banda_id INTEGER NOT NULL,
+
+    CONSTRAINT fk_integrante_banda
         FOREIGN KEY (banda_id)
         REFERENCES bandas(id)
         ON DELETE CASCADE

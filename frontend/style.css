@@ -1,300 +1,57 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* =========================
+   VARIABLES
+========================= */
+
+:root {
+    --negro: #0f0f14;
+    --acento: #7c6cff;
+    --acento-hover: #6358e0;
+    --acento-suave: #f0eeff;
+    --gris-fondo: #f4f5f9;
+    --gris-borde: #e4e7f0;
+    --blanco: #ffffff;
+    --texto: #1a1a2e;
+    --texto-suave: #6b7280;
+    --verde: #10b981;
+    --rojo: #ef4444;
+    --sombra: 0 2px 16px rgba(0,0,0,0.06);
+    --sombra-hover: 0 8px 32px rgba(124,108,255,0.15);
+    --radio: 16px;
 }
+
+/* =========================
+   BASE
+========================= */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
 
 body {
-    font-family: Arial, sans-serif;
-    background: #f1f3f6;
-    color: #222;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background: var(--gris-fondo);
+    color: var(--texto);
+    line-height: 1.6;
 }
 
 /* =========================
-   ENCABEZADO
+   NAVBAR
 ========================= */
-
-header {
-    background: #181818;
-    color: white;
-    text-align: center;
-    padding: 45px 20px;
-}
-
-header h1 {
-    font-size: 38px;
-    margin-bottom: 10px;
-}
-
-header p {
-    color: #bdbdbd;
-    font-size: 17px;
-}
-
-
-/* =========================
-   CONTENIDO PRINCIPAL
-========================= */
-
-main {
-    width: 90%;
-    max-width: 1200px;
-    margin: 40px auto;
-}
-
-section {
-    margin-bottom: 55px;
-}
-
-section h2 {
-    font-size: 28px;
-    margin-bottom: 20px;
-    border-left: 5px solid #181818;
-    padding-left: 12px;
-}
-
-
-/* =========================
-   FORMULARIOS
-========================= */
-
-#form-banda,
-#form-cancion {
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    margin-bottom: 30px;
-
-    display: grid;
-    gap: 15px;
-
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-}
-
-#form-banda input,
-#form-cancion input,
-#form-cancion select {
-    width: 100%;
-
-    padding: 13px;
-
-    border: 1px solid #ccc;
-    border-radius: 7px;
-
-    font-size: 16px;
-
-    outline: none;
-}
-
-#form-banda input:focus,
-#form-cancion input:focus,
-#form-cancion select:focus {
-    border-color: #181818;
-}
-
-
-/* =========================
-   BOTONES PRINCIPALES
-========================= */
-
-#form-banda button,
-#form-cancion button {
-    padding: 13px;
-
-    border: none;
-    border-radius: 7px;
-
-    background: #181818;
-    color: white;
-
-    font-size: 16px;
-    font-weight: bold;
-
-    cursor: pointer;
-
-    transition: 0.2s;
-}
-
-#form-banda button:hover,
-#form-cancion button:hover {
-    background: #333;
-    transform: translateY(-1px);
-}
-
-
-/* =========================
-   TARJETAS DE BANDAS
-========================= */
-
-#lista-bandas {
-    display: grid;
-
-    grid-template-columns:
-        repeat(auto-fit, minmax(280px, 1fr));
-
-    gap: 20px;
-}
-
-#lista-bandas > div {
-    background: white;
-
-    padding: 23px;
-
-    border-radius: 12px;
-
-    box-shadow:
-        0 4px 15px rgba(0, 0, 0, 0.08);
-
-    transition: 0.2s;
-}
-
-#lista-bandas > div:hover {
-    transform: translateY(-3px);
-
-    box-shadow:
-        0 7px 20px rgba(0, 0, 0, 0.12);
-}
-
-#lista-bandas h3 {
-    font-size: 22px;
-    margin-bottom: 12px;
-}
-
-#lista-bandas p {
-    margin-bottom: 9px;
-    line-height: 1.5;
-}
-
-
-/* =========================
-   TARJETAS DE CANCIONES
-========================= */
-
-#lista-canciones {
-    display: grid;
-
-    grid-template-columns:
-        repeat(auto-fit, minmax(280px, 1fr));
-
-    gap: 20px;
-}
-
-#lista-canciones > div {
-    background: white;
-
-    padding: 23px;
-
-    border-radius: 12px;
-
-    box-shadow:
-        0 4px 15px rgba(0, 0, 0, 0.08);
-
-    transition: 0.2s;
-}
-
-#lista-canciones > div:hover {
-    transform: translateY(-3px);
-
-    box-shadow:
-        0 7px 20px rgba(0, 0, 0, 0.12);
-}
-
-#lista-canciones h3 {
-    font-size: 21px;
-    margin-bottom: 13px;
-}
-
-#lista-canciones p {
-    margin-bottom: 9px;
-    line-height: 1.5;
-}
-
-
-/* =========================
-   BOTONES DE LAS TARJETAS
-========================= */
-
-#lista-bandas button,
-#lista-canciones button {
-    margin-top: 12px;
-
-    margin-right: 8px;
-
-    padding: 9px 14px;
-
-    border: none;
-
-    border-radius: 6px;
-
-    background: #181818;
-
-    color: white;
-
-    cursor: pointer;
-
-    font-size: 14px;
-
-    transition: 0.2s;
-}
-
-#lista-bandas button:hover,
-#lista-canciones button:hover {
-    background: #444;
-}
-
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 600px) {
-
-    header h1 {
-        font-size: 30px;
-    }
-
-    main {
-        width: 94%;
-    }
-
-    section h2 {
-        font-size: 24px;
-    }
-
-    #lista-bandas,
-    #lista-canciones {
-        grid-template-columns: 1fr;
-    }
-
-}
-
-/* =========================
-   NAVEGACIÓN
-========================= */
-
-html {
-    scroll-behavior: smooth;
-}
 
 .navbar {
     position: sticky;
     top: 0;
     z-index: 1000;
-
-    background: #111;
-
-    box-shadow:
-        0 2px 10px rgba(0, 0, 0, 0.2);
+    background: rgba(15, 15, 20, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
 .nav-container {
     width: 90%;
     max-width: 1200px;
-
     margin: auto;
-
-    min-height: 65px;
-
+    min-height: 62px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -302,237 +59,759 @@ html {
 
 .logo {
     color: white;
-
     text-decoration: none;
-
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.2px;
 }
 
-.nav-links {
-    display: flex;
-
-    gap: 25px;
-}
+.nav-links { display: flex; gap: 4px; }
 
 .nav-links a {
-    color: #ddd;
-
+    color: #9ca3af;
     text-decoration: none;
-
-    font-size: 15px;
-
-    transition: 0.2s;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 7px 14px;
+    border-radius: 8px;
+    transition: all 0.18s;
 }
 
-.nav-links a:hover {
-    color: white;
-}
-
+.nav-links a:hover { color: white; background: rgba(255,255,255,0.08); }
 
 /* =========================
-   ENCABEZADO
+   HERO
 ========================= */
 
 header {
-    min-height: 280px;
-
-    display: flex;
-    flex-direction: column;
-
-    justify-content: center;
-    align-items: center;
-
+    background: linear-gradient(145deg, #0f0f14 0%, #1a1535 55%, #251a50 100%);
+    color: white;
+    padding: 60px 20px 50px;
     text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
+/* Círculos decorativos */
+header::before {
+    content: '';
+    position: absolute;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(124,108,255,0.18) 0%, transparent 65%);
+    top: -150px; right: -100px;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    width: 350px; height: 350px;
+    background: radial-gradient(circle, rgba(124,108,255,0.12) 0%, transparent 65%);
+    bottom: -100px; left: -80px;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.hero-content { position: relative; z-index: 1; }
+
+.hero-badge {
+    display: inline-block;
+    background: rgba(124,108,255,0.25);
+    border: 1px solid rgba(165,180,252,0.35);
+    color: #c4b5fd;
+    padding: 5px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+}
+
+header h1 {
+    font-size: 44px;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #fff 40%, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+header > .hero-content > p {
+    color: #9ca3af;
+    font-size: 15px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* Stats en el hero */
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    margin-top: 40px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 18px 40px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 32px;
+}
+
+.hero-stat span {
+    font-size: 30px;
+    font-weight: 800;
+    color: white;
+    letter-spacing: -1px;
+    line-height: 1;
+}
+
+.hero-stat label {
+    font-size: 11px;
+    color: #6b7280;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-top: 4px;
+}
+
+.hero-stat-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255,255,255,0.1);
+}
 
 /* =========================
-   ENCABEZADO DE SECCIONES
+   MAIN
+========================= */
+
+main {
+    width: 90%;
+    max-width: 1200px;
+    margin: 48px auto;
+}
+
+section { margin-bottom: 64px; }
+
+section h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--acento);
+    padding-left: 14px;
+    color: var(--texto);
+}
+
+/* =========================
+   SECTION HEADER
 ========================= */
 
 .section-header {
-    margin-bottom: 25px;
-
-    padding: 25px;
-
-    background: white;
-
-    border-radius: 12px;
-
-    box-shadow:
-        0 4px 15px rgba(0, 0, 0, 0.06);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 28px;
+    padding: 22px 26px;
+    background: var(--blanco);
+    border-radius: var(--radio);
+    border: 1px solid var(--gris-borde);
+    box-shadow: var(--sombra);
 }
 
-.section-icon {
-    font-size: 35px;
-
-    display: block;
-
-    margin-bottom: 8px;
-}
+.section-icon { font-size: 36px; flex-shrink: 0; }
 
 .section-header h2 {
-    margin-bottom: 8px;
-
+    margin-bottom: 4px;
     border-left: none;
-
     padding-left: 0;
+    font-size: 20px;
 }
 
 .section-header p {
-    color: #666;
+    color: var(--texto-suave);
+    font-size: 13px;
+    margin: 0;
+}
 
+/* =========================
+   FORMULARIOS
+========================= */
+
+.form-card {
+    background: var(--blanco);
+    padding: 28px;
+    border-radius: var(--radio);
+    margin-bottom: 32px;
+    border: 1px solid var(--gris-borde);
+    box-shadow: var(--sombra);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-titulo {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--texto-suave);
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--gris-borde);
+    letter-spacing: 0.2px;
+}
+
+.form-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.campo label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--texto-suave);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+
+.campo input,
+.campo select,
+#form-banda input,
+#form-cancion input,
+#form-cancion select,
+#form-integrante input,
+#form-integrante select {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid var(--gris-borde);
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: all 0.2s;
+    color: var(--texto);
+    background: #fafafa;
+}
+
+.campo input:focus,
+.campo select:focus,
+#form-banda input:focus,
+#form-cancion input:focus,
+#form-cancion select:focus,
+#form-integrante input:focus,
+#form-integrante select:focus {
+    border-color: var(--acento);
+    background: white;
+    box-shadow: 0 0 0 3px rgba(124,108,255,0.12);
+}
+
+.campo input::placeholder,
+#form-banda input::placeholder,
+#form-cancion input::placeholder,
+#form-integrante input::placeholder { color: #c0c5d0; }
+
+/* Botones de formulario */
+.form-card button,
+#form-banda button,
+#form-cancion button,
+#form-integrante button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    background: var(--acento);
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s;
+    align-self: flex-start;
+}
+
+.form-card button:hover,
+#form-banda button:hover,
+#form-cancion button:hover,
+#form-integrante button:hover {
+    background: var(--acento-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(124,108,255,0.35);
+}
+
+/* =========================
+   TARJETAS
+========================= */
+
+#lista-bandas,
+#lista-canciones,
+#lista-integrantes {
+    display: grid;
+    gap: 18px;
+}
+
+#lista-bandas    { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+#lista-canciones { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+#lista-integrantes { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+
+#lista-bandas > div,
+#lista-canciones > div,
+#lista-integrantes > div {
+    background: var(--blanco);
+    padding: 0;
+    border-radius: var(--radio);
+    border: 1px solid var(--gris-borde);
+    box-shadow: var(--sombra);
+    transition: all 0.22s;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+#lista-bandas > div:hover,
+#lista-canciones > div:hover,
+#lista-integrantes > div:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sombra-hover);
+    border-color: #cac3ff;
+}
+
+/* Franja de color top */
+#lista-bandas > div::before,
+#lista-canciones > div::before,
+#lista-integrantes > div::before {
+    content: '';
+    display: block;
+    height: 4px;
+    background: linear-gradient(90deg, var(--acento), #a78bfa, #38bdf8);
+    flex-shrink: 0;
+}
+
+/* Contenido de las tarjetas — envuelto en un div interno */
+#lista-bandas > div > *:not(:first-child),
+#lista-canciones > div > *:not(:first-child),
+#lista-integrantes > div > *:not(:first-child) {
+    padding-left: 22px;
+    padding-right: 22px;
+}
+
+#lista-bandas h3,
+#lista-canciones h3,
+#lista-integrantes h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--texto);
+    padding: 18px 22px 6px;
+}
+
+#lista-bandas p,
+#lista-canciones p,
+#lista-integrantes p {
+    font-size: 13px;
+    color: var(--texto-suave);
+    padding: 2px 22px;
     line-height: 1.5;
 }
 
+#lista-bandas p strong,
+#lista-canciones p strong,
+#lista-integrantes p strong {
+    color: var(--texto);
+    font-weight: 600;
+}
+
+/* Área de botones en tarjeta */
+#lista-bandas > div > div.card-actions,
+#lista-canciones > div > div.card-actions,
+#lista-integrantes > div > div.card-actions {
+    padding: 14px 22px 18px;
+    margin-top: auto;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* Botones de tarjetas */
+#lista-bandas button,
+#lista-canciones button,
+#lista-integrantes button {
+    border: none;
+    padding: 7px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    margin: 0 8px 14px 0;
+    margin-left: 0;
+    transition: all 0.18s;
+}
+
+/* Ver detalle (bandas) */
+#lista-bandas button:first-of-type {
+    background: var(--acento-suave);
+    color: var(--acento);
+}
+#lista-bandas button:first-of-type:hover {
+    background: var(--acento);
+    color: white;
+}
+
+/* Editar */
+#lista-bandas button:nth-of-type(2),
+#lista-canciones button:first-of-type,
+#lista-integrantes button:first-of-type {
+    background: #f3f4f6;
+    color: #374151;
+}
+#lista-bandas button:nth-of-type(2):hover,
+#lista-canciones button:first-of-type:hover,
+#lista-integrantes button:first-of-type:hover {
+    background: #e5e7eb;
+}
+
+/* Eliminar */
+#lista-bandas button:last-of-type,
+#lista-canciones button:last-of-type,
+#lista-integrantes button:last-of-type {
+    background: #fff1f1;
+    color: var(--rojo);
+}
+#lista-bandas button:last-of-type:hover,
+#lista-canciones button:last-of-type:hover,
+#lista-integrantes button:last-of-type:hover {
+    background: var(--rojo);
+    color: white;
+}
 
 /* =========================
-   SEPARACIÓN ENTRE SECCIONES
+   SEPARADORES
 ========================= */
 
-#bandas {
-    padding-top: 30px;
+#busqueda-banda { padding-top: 6px; }
+#bandas         { padding-top: 40px; border-top: 1px solid var(--gris-borde); }
+#canciones      { padding-top: 50px; border-top: 1px solid var(--gris-borde); }
+#integrantes    { padding-top: 50px; border-top: 1px solid var(--gris-borde); }
+
+/* =========================
+   BÚSQUEDA
+========================= */
+
+.busqueda-container {
+    position: relative;
+    max-width: 560px;
 }
 
-#canciones {
-    padding-top: 50px;
-
-    border-top: 1px solid #ddd;
+.busqueda-input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
+.busqueda-icono {
+    position: absolute;
+    left: 16px;
+    font-size: 16px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+#input-busqueda {
+    width: 100%;
+    padding: 14px 18px 14px 46px;
+    font-size: 15px;
+    font-family: inherit;
+    border: 1.5px solid var(--gris-borde);
+    border-radius: 12px;
+    outline: none;
+    transition: all 0.2s;
+    background: var(--blanco);
+    color: var(--texto);
+    box-shadow: var(--sombra);
+}
+
+#input-busqueda:focus {
+    border-color: var(--acento);
+    box-shadow: 0 0 0 4px rgba(124,108,255,0.1);
+}
+
+#input-busqueda::placeholder { color: #b8bec9; }
+
+.resultados-busqueda {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0; right: 0;
+    background: var(--blanco);
+    border-radius: 14px;
+    border: 1px solid var(--gris-borde);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+    z-index: 100;
+    overflow: hidden;
+    display: none;
+}
+
+.resultados-busqueda.activo { display: block; }
+
+.resultado-item {
+    padding: 13px 18px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f5f5f7;
+    transition: background 0.15s;
+}
+
+.resultado-item:last-child { border-bottom: none; }
+.resultado-item:hover { background: var(--acento-suave); }
+
+.resultado-item.sin-resultados {
+    cursor: default;
+    color: var(--texto-suave);
+    justify-content: center;
+    font-size: 13px;
+}
+
+.resultado-nombre { font-weight: 600; font-size: 14px; color: var(--texto); }
+
+.resultado-genero {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--acento);
+    background: var(--acento-suave);
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+}
+
+/* =========================
+   PANEL DETALLE
+========================= */
+
+.detalle-banda {
+    margin-top: 24px;
+    background: var(--blanco);
+    border-radius: var(--radio);
+    border: 1px solid var(--gris-borde);
+    box-shadow: 0 8px 40px rgba(124,108,255,0.14);
+    overflow: hidden;
+    animation: aparecer 0.3s ease;
+}
+
+.detalle-banda.oculto { display: none; }
+
+.detalle-header {
+    background: linear-gradient(135deg, #0f0f14 0%, #1a1535 60%, #251a50 100%);
+    color: white;
+    padding: 30px 34px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.detalle-info h2 {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    border-left: none;
+    padding-left: 0;
+    letter-spacing: -0.5px;
+}
+
+.badge-genero {
+    display: inline-block;
+    background: rgba(124,108,255,0.3);
+    border: 1px solid rgba(167,139,250,0.4);
+    color: #c4b5fd;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.detalle-info p {
+    color: #9ca3af;
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 480px;
+}
+
+.btn-cerrar {
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.8);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 9px 18px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: inherit;
+    white-space: nowrap;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.btn-cerrar:hover {
+    background: rgba(255,255,255,0.16);
+    color: white;
+}
+
+.detalle-contenido {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.detalle-seccion {
+    padding: 26px 34px;
+    border-right: 1px solid var(--gris-borde);
+}
+
+.detalle-seccion:last-child { border-right: none; }
+
+.detalle-seccion h3 {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--texto-suave);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+    border-left: none;
+    padding-left: 0;
+}
+
+.detalle-item {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+    border-bottom: 1px solid #f5f5f7;
+}
+
+.detalle-item:last-child { border-bottom: none; }
+
+.detalle-item-titulo {
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 2px;
+    color: var(--texto);
+}
+
+.detalle-item-meta {
+    font-size: 12px;
+    color: var(--texto-suave);
+}
+
+.cargando {
+    color: #c0c5d0;
+    font-style: italic;
+    font-size: 13px;
+}
+
+.sin-datos {
+    color: #c0c5d0;
+    font-size: 13px;
+    padding: 8px 0;
+}
 
 /* =========================
    FOOTER
 ========================= */
 
 footer {
-    margin-top: 60px;
-
-    padding: 35px 20px;
-
-    background: #181818;
-
+    margin-top: 80px;
+    padding: 40px 20px;
+    background: var(--negro);
     color: white;
-
     text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.05);
 }
 
 footer p {
-    font-size: 18px;
-
-    font-weight: bold;
-
-    margin-bottom: 8px;
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 6px;
 }
 
 footer span {
-    color: #aaa;
-
-    font-size: 14px;
-}
-
-
-/* =========================
-   RESPONSIVE NAVBAR
-========================= */
-
-@media (max-width: 600px) {
-
-    .nav-container {
-        flex-direction: column;
-
-        padding: 15px 0;
-
-        gap: 12px;
-    }
-
-    .nav-links {
-        gap: 18px;
-    }
-
+    color: #4b5563;
+    font-size: 12px;
 }
 
 /* =========================
-   BOTONES DE ACCIONES
-========================= */
-
-#lista-bandas button,
-#lista-canciones button {
-    border: none;
-    padding: 9px 15px;
-    border-radius: 6px;
-    font-size: 14px;
-    cursor: pointer;
-    margin-top: 12px;
-    margin-right: 8px;
-    transition: 0.2s;
-}
-
-/* Botón editar */
-
-#lista-bandas button:first-of-type,
-#lista-canciones button:first-of-type {
-    background: #333;
-    color: white;
-}
-
-#lista-bandas button:first-of-type:hover,
-#lista-canciones button:first-of-type:hover {
-    background: #555;
-}
-
-/* Botón eliminar */
-
-#lista-bandas button:last-of-type,
-#lista-canciones button:last-of-type {
-    background: #ddd;
-    color: #222;
-}
-
-#lista-bandas button:last-of-type:hover,
-#lista-canciones button:last-of-type:hover {
-    background: #bbb;
-}
-
-
-/* =========================
-   MENSAJES
+   TOAST
 ========================= */
 
 .mensaje {
     position: fixed;
-
-    bottom: 25px;
-    right: 25px;
-
-    background: #181818;
+    bottom: 28px;
+    right: 28px;
+    background: var(--negro);
     color: white;
-
-    padding: 15px 22px;
-
-    border-radius: 8px;
-
-    box-shadow:
-        0 5px 20px rgba(0, 0, 0, 0.25);
-
-    font-size: 15px;
-
+    padding: 14px 20px;
+    border-radius: 12px;
+    border-left: 4px solid var(--acento);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    font-size: 14px;
+    font-weight: 500;
     z-index: 2000;
-
     animation: aparecer 0.3s ease;
+    max-width: 300px;
 }
 
 @keyframes aparecer {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
 
-    from {
-        opacity: 0;
-        transform: translateY(15px);
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 700px) {
+    header h1 { font-size: 32px; }
+
+    .hero-stats {
+        padding: 16px 24px;
+        gap: 0;
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    .hero-stat { padding: 0 18px; }
+    .hero-stat span { font-size: 24px; }
 
+    main { width: 94%; }
+
+    .form-grid-2 { grid-template-columns: 1fr; }
+
+    #lista-bandas,
+    #lista-canciones,
+    #lista-integrantes { grid-template-columns: 1fr; }
+
+    .detalle-contenido { grid-template-columns: 1fr; }
+
+    .detalle-seccion { border-right: none; border-bottom: 1px solid var(--gris-borde); }
+
+    .detalle-header { flex-direction: column; }
+
+    .nav-container { flex-direction: column; padding: 14px 0; gap: 10px; }
+
+    .nav-links { gap: 2px; flex-wrap: wrap; justify-content: center; }
 }

@@ -1,4 +1,4 @@
--- =========================================
+﻿-- =========================================
 -- BANDAS
 -- =========================================
 
@@ -72,9 +72,9 @@ VALUES
 ('About a Girl', '2:48', 'Bleach', 7),
 
 -- The Cure
-('Boys Don’t Cry', '2:49', 'Three Imaginary Boys', 8),
+('Boys Don''t Cry', '2:49', 'Three Imaginary Boys', 8),
 ('Just Like Heaven', '3:45', 'Kiss Me, Kiss Me, Kiss Me', 8),
-('Friday I’m in Love', '3:41', 'Wish', 8),
+('Friday I''m in Love', '3:41', 'Wish', 8),
 ('Lovesong', '3:29', 'Disintegration', 8),
 
 -- Mac DeMarco
@@ -88,3 +88,71 @@ VALUES
 ('Gamma Knife', '4:21', 'Nonagon Infinity', 10),
 ('Robot Stop', '5:22', 'Nonagon Infinity', 10),
 ('The River', '10:10', 'Quarters!', 10);
+
+-- =========================================
+-- INTEGRANTES
+-- =========================================
+
+INSERT INTO integrantes (nombre, rol, anio_ingreso, banda_id)
+VALUES
+
+-- Arctic Monkeys
+('Alex Turner', 'Voz y Guitarra', 2002, 1),
+('Jamie Cook', 'Guitarra', 2002, 1),
+('Nick O''Malley', 'Bajo', 2006, 1),
+('Matt Helders', 'Batería', 2002, 1),
+
+-- Tame Impala
+('Kevin Parker', 'Voz, Guitarra y Producción', 2007, 2),
+('Dominic Simper', 'Guitarra y Sintetizador', 2007, 2),
+('Jay Watson', 'Batería y Sintetizador', 2007, 2),
+('Cam Avery', 'Bajo y Voz', 2012, 2),
+
+-- Pink Floyd
+('David Gilmour', 'Guitarra y Voz', 1968, 3),
+('Roger Waters', 'Bajo y Voz', 1965, 3),
+('Nick Mason', 'Batería', 1965, 3),
+('Richard Wright', 'Teclados y Voz', 1965, 3),
+
+-- The Strokes
+('Julian Casablancas', 'Voz', 1998, 4),
+('Nick Valensi', 'Guitarra', 1998, 4),
+('Albert Hammond Jr.', 'Guitarra', 1998, 4),
+('Nikolai Fraiture', 'Bajo', 1998, 4),
+('Fabrizio Moretti', 'Batería', 1998, 4),
+
+-- Radiohead
+('Thom Yorke', 'Voz y Guitarra', 1985, 5),
+('Jonny Greenwood', 'Guitarra y Teclados', 1985, 5),
+('Colin Greenwood', 'Bajo', 1985, 5),
+('Ed O''Brien', 'Guitarra', 1985, 5),
+('Philip Selway', 'Batería', 1985, 5),
+
+-- The Beatles
+('John Lennon', 'Voz y Guitarra', 1960, 6),
+('Paul McCartney', 'Voz y Bajo', 1960, 6),
+('George Harrison', 'Guitarra', 1960, 6),
+('Ringo Starr', 'Batería', 1962, 6),
+
+-- Nirvana
+('Kurt Cobain', 'Voz y Guitarra', 1987, 7),
+('Krist Novoselic', 'Bajo', 1987, 7),
+('Dave Grohl', 'Batería', 1990, 7),
+
+-- The Cure
+('Robert Smith', 'Voz y Guitarra', 1976, 8),
+('Simon Gallup', 'Bajo', 1979, 8),
+('Roger O''Donnell', 'Teclados', 1987, 8),
+('Jason Cooper', 'Batería', 1995, 8),
+
+-- Mac DeMarco
+('Mac DeMarco', 'Voz, Guitarra y Producción', 2010, 9),
+('Andy White', 'Batería', 2012, 9),
+('Pierce McGarry', 'Bajo', 2012, 9),
+
+-- King Gizzard & The Lizard Wizard
+('Stu Mackenzie', 'Voz y Guitarra', 2010, 10),
+('Ambrose Kenny-Smith', 'Armónica y Voz', 2010, 10),
+('Cook Craig', 'Guitarra', 2010, 10),
+('Lucas Skinner', 'Bajo', 2010, 10),
+('Michael Cavanagh', 'Batería', 2010, 10);

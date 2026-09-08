@@ -4,244 +4,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Music Manager</title>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- =========================
-         NAVEGACIÓN
-    ========================== -->
-
+    <!-- NAVEGACIÓN -->
     <nav class="navbar">
-
         <div class="nav-container">
-
-            <a href="#" class="logo">
-                🎵 Music Manager
-            </a>
-
+            <a href="#" class="logo">🎵 Music Manager</a>
             <div class="nav-links">
-
-                <a href="#inicio">
-                    Inicio
-                </a>
-
-                <a href="#bandas">
-                    Bandas
-                </a>
-
-                <a href="#canciones">
-                    Canciones
-                </a>
-
+                <a href="#inicio">Inicio</a>
+                <a href="#bandas">Bandas</a>
+                <a href="#canciones">Canciones</a>
+                <a href="#integrantes">Integrantes</a>
             </div>
-
         </div>
-
     </nav>
 
-
-    <!-- =========================
-         ENCABEZADO / INICIO
-    ========================== -->
-
+    <!-- HERO -->
     <header id="inicio">
-
-        <h1>
-            🎵 Music Manager
-        </h1>
-
-        <p>
-            Gestiona tus bandas y canciones
-        </p>
-
+        <div class="hero-content">
+            <div class="hero-badge">🎶 Plataforma musical</div>
+            <h1>Music Manager</h1>
+            <p>Gestiona tus bandas, canciones e integrantes en un solo lugar</p>
+        </div>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <span id="stat-bandas">–</span>
+                <label>Bandas</label>
+            </div>
+            <div class="hero-stat-divider"></div>
+            <div class="hero-stat">
+                <span id="stat-canciones">–</span>
+                <label>Canciones</label>
+            </div>
+            <div class="hero-stat-divider"></div>
+            <div class="hero-stat">
+                <span id="stat-integrantes">–</span>
+                <label>Integrantes</label>
+            </div>
+        </div>
     </header>
-
-
-    <!-- =========================
-         CONTENIDO PRINCIPAL
-    ========================== -->
 
     <main>
 
-
-        <!-- =========================
-             BANDAS
-        ========================== -->
-
-        <section id="bandas">
-
+        <!-- BÚSQUEDA -->
+        <section id="busqueda-banda">
             <div class="section-header">
-
+                <span class="section-icon">🔍</span>
                 <div>
-
-                    <span class="section-icon">
-                        🎸
-                    </span>
-
-                    <h2>
-                        Bandas
-                    </h2>
-
-                    <p>
-                        Administra las bandas registradas en tu colección musical.
-                    </p>
-
+                    <h2>Buscar Banda</h2>
+                    <p>Busca una banda para ver su información, canciones e integrantes.</p>
                 </div>
-
             </div>
 
-
-            <!-- FORMULARIO BANDA -->
-
-            <form id="form-banda">
-
-                <input
-                    type="text"
-                    id="nombre-banda"
-                    placeholder="Nombre de la banda"
-                    required
-                >
-
-                <input
-                    type="text"
-                    id="genero-banda"
-                    placeholder="Género musical"
-                    required
-                >
-
-                <input
-                    type="text"
-                    id="descripcion-banda"
-                    placeholder="Descripción"
-                    required
-                >
-
-                <button type="submit">
-                    + Agregar banda
-                </button>
-
-            </form>
-
-
-            <!-- LISTA DE BANDAS -->
-
-            <div id="lista-bandas">
-
-                <!-- Las bandas aparecerán aquí -->
-
+            <div class="busqueda-container">
+                <div class="busqueda-input-wrap">
+                    <span class="busqueda-icono">🔍</span>
+                    <input type="text" id="input-busqueda" placeholder="Buscar banda por nombre o género..." autocomplete="off">
+                </div>
+                <div id="resultados-busqueda" class="resultados-busqueda"></div>
             </div>
 
+            <!-- PANEL DE DETALLE -->
+            <div id="detalle-banda" class="detalle-banda oculto">
+                <div class="detalle-header">
+                    <div class="detalle-info">
+                        <h2 id="detalle-nombre"></h2>
+                        <span id="detalle-genero" class="badge-genero"></span>
+                        <p id="detalle-descripcion"></p>
+                    </div>
+                    <button onclick="cerrarDetalle()" class="btn-cerrar">✕ Cerrar</button>
+                </div>
+                <div class="detalle-contenido">
+                    <div class="detalle-seccion">
+                        <h3>🎶 Canciones</h3>
+                        <div id="detalle-canciones"><p class="cargando">Cargando...</p></div>
+                    </div>
+                    <div class="detalle-seccion">
+                        <h3>👥 Integrantes</h3>
+                        <div id="detalle-integrantes"><p class="cargando">Cargando...</p></div>
+                    </div>
+                </div>
+            </div>
         </section>
 
-
-
-        <!-- =========================
-             CANCIONES
-        ========================== -->
-
-        <section id="canciones">
-
+        <!-- BANDAS -->
+        <section id="bandas">
             <div class="section-header">
-
+                <span class="section-icon">🎸</span>
                 <div>
-
-                    <span class="section-icon">
-                        🎶
-                    </span>
-
-                    <h2>
-                        Canciones
-                    </h2>
-
-                    <p>
-                        Consulta y administra las canciones de tus bandas.
-                    </p>
-
+                    <h2>Bandas</h2>
+                    <p>Administra las bandas registradas en tu colección musical.</p>
                 </div>
-
             </div>
 
-
-            <!-- FORMULARIO CANCIÓN -->
-
-            <form id="form-cancion">
-
-                <input
-                    type="text"
-                    id="titulo-cancion"
-                    placeholder="Título de la canción"
-                    required
-                >
-
-                <input
-                    type="text"
-                    id="album-cancion"
-                    placeholder="Álbum"
-                    required
-                >
-
-                <input
-                    type="text"
-                    id="duracion-cancion"
-                    placeholder="Duración (ej: 3:45)"
-                    required
-                >
-
-                <select
-                    id="banda-cancion"
-                    required
-                >
-
-                    <option value="">
-                        Selecciona una banda
-                    </option>
-
-                </select>
-
-                <button type="submit">
-                    + Agregar canción
-                </button>
-
+            <form id="form-banda" class="form-card">
+                <div class="form-titulo">➕ Nueva banda</div>
+                <div class="form-grid-2">
+                    <div class="campo">
+                        <label>Nombre</label>
+                        <input type="text" id="nombre-banda" placeholder="Ej: Arctic Monkeys" required>
+                    </div>
+                    <div class="campo">
+                        <label>Género</label>
+                        <input type="text" id="genero-banda" placeholder="Ej: Indie Rock" required>
+                    </div>
+                </div>
+                <div class="campo">
+                    <label>Descripción</label>
+                    <input type="text" id="descripcion-banda" placeholder="Una breve descripción de la banda..." required>
+                </div>
+                <button type="submit">+ Agregar banda</button>
             </form>
 
+            <div id="lista-bandas"></div>
+        </section>
 
-            <!-- LISTA DE CANCIONES -->
-
-            <div id="lista-canciones">
-
-                <!-- Las canciones aparecerán aquí -->
-
+        <!-- CANCIONES -->
+        <section id="canciones">
+            <div class="section-header">
+                <span class="section-icon">🎶</span>
+                <div>
+                    <h2>Canciones</h2>
+                    <p>Consulta y administra las canciones de tus bandas.</p>
+                </div>
             </div>
 
+            <form id="form-cancion" class="form-card">
+                <div class="form-titulo">➕ Nueva canción</div>
+                <div class="form-grid-2">
+                    <div class="campo">
+                        <label>Título</label>
+                        <input type="text" id="titulo-cancion" placeholder="Ej: Do I Wanna Know?" required>
+                    </div>
+                    <div class="campo">
+                        <label>Álbum</label>
+                        <input type="text" id="album-cancion" placeholder="Ej: AM" required>
+                    </div>
+                </div>
+                <div class="form-grid-2">
+                    <div class="campo">
+                        <label>Duración</label>
+                        <input type="text" id="duracion-cancion" placeholder="Ej: 3:45" required>
+                    </div>
+                    <div class="campo">
+                        <label>Banda</label>
+                        <select id="banda-cancion" required>
+                            <option value="">Selecciona una banda</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit">+ Agregar canción</button>
+            </form>
+
+            <div id="lista-canciones"></div>
+        </section>
+
+        <!-- INTEGRANTES -->
+        <section id="integrantes">
+            <div class="section-header">
+                <span class="section-icon">👥</span>
+                <div>
+                    <h2>Integrantes</h2>
+                    <p>Administra los integrantes de cada banda.</p>
+                </div>
+            </div>
+
+            <form id="form-integrante" class="form-card">
+                <div class="form-titulo">➕ Nuevo integrante</div>
+                <div class="form-grid-2">
+                    <div class="campo">
+                        <label>Nombre</label>
+                        <input type="text" id="nombre-integrante" placeholder="Ej: Alex Turner" required>
+                    </div>
+                    <div class="campo">
+                        <label>Rol</label>
+                        <input type="text" id="rol-integrante" placeholder="Ej: Voz y Guitarra" required>
+                    </div>
+                </div>
+                <div class="form-grid-2">
+                    <div class="campo">
+                        <label>Año de ingreso</label>
+                        <input type="number" id="anio-integrante" placeholder="Ej: 2002" min="1900" max="2100">
+                    </div>
+                    <div class="campo">
+                        <label>Banda</label>
+                        <select id="banda-integrante" required>
+                            <option value="">Selecciona una banda</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit">+ Agregar integrante</button>
+            </form>
+
+            <div id="lista-integrantes"></div>
         </section>
 
     </main>
 
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
     <footer>
-
-        <p>
-            🎵 Music Manager
-        </p>
-
-        <span>
-            Aplicación web full-stack
-        </span>
-
+        <p>🎵 Music Manager</p>
+        <span>Aplicación web full-stack · FastAPI + PostgreSQL</span>
     </footer>
-
 
     <script src="script.js"></script>
 
 </body>
-
 </html>
