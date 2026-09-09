@@ -45,7 +45,11 @@ Desarrollar e implementar una aplicación web full-stack utilizando servicios de
 
 ### Infraestructura cloud
 
-* Por definir
+* **Despliegue planeado:** AWS (Amazon Web Services)
+  * **Frontend:** AWS Amplify / S3 Static Website Hosting
+  * **Backend:** AWS App Runner (contenedor Docker con FastAPI)
+  * **Base de datos:** PostgreSQL en la nube (Neon.tech / AWS RDS)
+  * **CI/CD:** GitHub Actions / AWS Pipeline integration
 
 ## ⚙️ Funcionalidades
 
